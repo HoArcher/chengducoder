@@ -1,0 +1,9 @@
+.login-panel{
+    position: relative;
+    height: 38.2%;
+    min-height: 293px;
+    width: 1000px;
+    margin: 0 auto;
+    background: black;
+    padding-bottom: 370px;
+}

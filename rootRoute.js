@@ -23,7 +23,7 @@ import Contact from './src/components/test/contact'
 
 const RootRoute = [
   {
-    path: '/',
+    path: '/1',
     exact: true,
 
     main: () => <Home1 />

@@ -1,9 +1,33 @@
+body{
+
+}
+.page-panel{
+    background-image: url('https://ss3.bdstatic.com/lPoZeXSm1A5BphGlnYG/skin/2.jpg?2');
+     background-size: 100% 100%;
+      background-repeat: no-repeat;
+       background-position: center;
+        position: absolute; 
+
+         width: 100%;
+          height: 100%;
+}
 .login-panel{
     position: relative;
-    height: 38.2%;
-    min-height: 293px;
-    width: 1000px;
-    margin: 0 auto;
-    background: black;
-    padding-bottom: 370px;
+    margin-top: 15%;
+    /* background: black; */
+    /* padding-bottom: 370px; */
 }
+
+  .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    width: 100%;
+    margin-bottom: 0.1rem;
+  }
+  .option-box{
+
+padding: 2rem;
+background: whitesmoke;
+
+  }

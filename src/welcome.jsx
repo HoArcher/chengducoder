@@ -16,7 +16,9 @@ class WelcomePage extends React.Component {
 
     }
     toLogin() {
-
+        this.setState({
+            isLogin: true
+        })
     }
 
     handleSubmit(e) {
@@ -31,13 +33,15 @@ class WelcomePage extends React.Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const { isLogin } = this.state;
+        const self = this;
         return (
             <div className='page-panel'>
 
                 <Row className='login-panel' type="flex" justify="center">
                     <Col className='option-box' xl={5} lg={8} md={12} sm={16} xs={20}>
+                        <div className='option-box-bkg'></div>
                         {isLogin ?
-                            <Form onSubmit={this.handleSubmit} className="login-form">
+                            <Form onSubmit={this.handleSubmit.bind(self)} className="login-form">
                                 <FormItem>
                                     {getFieldDecorator('userName', {
                                         rules: [{ required: true, message: 'Please input your username!' }],
@@ -67,7 +71,7 @@ class WelcomePage extends React.Component {
                                     Or <a href="">register now~!</a>
                                 </div>
 
-                            </Form> : <div onClick={this.toLogin}>
+                            </Form> : <div onClick={this.toLogin.bind(self)}>
                                 请登录
 
                         </div>}

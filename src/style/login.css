@@ -27,13 +27,17 @@ overflow: hidden;
     width: 100%;
     margin-bottom: 0.1rem;
   }
+  .login-form{
+    padding: 2rem;
+    border: 1px solid white;
+    color: white;
+  }
   .option-box{
-padding: 2rem;
-
-
-
+    z-index: 0;
+color: white
   }
   .option-box-bkg{
+    z-index: -1;
     background: black;
     position: absolute;
     height: 100%;

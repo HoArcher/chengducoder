@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './style/login.css'
+import './style/app.css'
+
 import { Form, Icon, Input, Button, Checkbox, Row, Col } from 'antd';
 const FormItem = Form.Item;
 class WelcomePage extends React.Component {
@@ -38,14 +40,14 @@ class WelcomePage extends React.Component {
             <div className='page-panel'>
 
                 <Row className='login-panel' type="flex" justify="center">
-                    <Col className='option-box' xl={5} lg={8} md={12} sm={16} xs={20}>
-                        <div className='option-box-bkg'></div>
+                    <Col className='opration-box' xl={8} lg={14} md={18} sm={20} xs={24}>
+                        <div className='opration-box-bkg'></div>
                         {isLogin ?
                             <Form onSubmit={this.handleSubmit.bind(self)} className="login-form">
                                 <FormItem>
                                     {getFieldDecorator('userName', {
                                         rules: [{ required: true, message: 'Please input your username!' }],
-                                    })(  
+                                    })(
                                         <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
                                         )}
                                 </FormItem>
@@ -71,10 +73,16 @@ class WelcomePage extends React.Component {
                                     Or <a href="">register now~!</a>
                                 </div>
 
-                            </Form> : <div className='login-form' onClick={this.toLogin.bind(self)}>
-                                请登录
+                            </Form> : <div className='login-form without-login' onClick={this.toLogin.bind(self)}>
+                                <div className='devide-line'> </div>
+                                <div className='option-box'>
+                                    <ul>
+                                        <li> <a href='#'>请登录...</a></li>
+                                        <li> <a href='#'>游客访问</a></li>
+                                    </ul></div>
+                                <div className='devide-line'> </div>
 
-                        </div>}
+                            </div>}
                     </Col>
                 </Row>
                 {/* <div className='login-panel'>

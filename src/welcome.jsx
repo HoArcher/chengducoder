@@ -23,6 +23,10 @@ class WelcomePage extends React.Component {
         })
     }
 
+    withoutLogin() {
+
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -77,8 +81,8 @@ class WelcomePage extends React.Component {
                                 <div className='devide-line'> </div>
                                 <div className='option-box'>
                                     <ul>
-                                        <li> <a href='#'>请登录...</a></li>
-                                        <li> <a href='#'>游客访问</a></li>
+                                        <li> <a href='javascript:;'>请登录...</a></li>
+                                        <li> <a onClick={this.withoutLogin.bind(self)} href='javascript:;'>游客访问</a></li>
                                     </ul></div>
                                 <div className='devide-line'> </div>
 

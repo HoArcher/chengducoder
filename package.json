@@ -6,9 +6,9 @@
   "keywords": [
     "webpack"
   ],
-  "author": "huhao",
+  "author": "hehao",
   "scripts": {
-    "build": "webpack --config webpack.config.dev.js",
+    "build": "webpack webpack.config.js",
     "start": "node server/server.js"
   },
   "dependencies": {

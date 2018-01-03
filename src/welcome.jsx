@@ -1,8 +1,9 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './style/login.css'
-import './style/app.css'
+import { Router, Route, Link, Switch, NavLink } from 'react-router-dom'
+import './style/login.css';
+import './style/app.css';
 
 import { Form, Icon, Input, Button, Checkbox, Row, Col } from 'antd';
 const FormItem = Form.Item;
@@ -24,7 +25,7 @@ class WelcomePage extends React.Component {
     }
 
     withoutLogin() {
-
+        location.href = './context'
     }
 
     handleSubmit(e) {
@@ -45,9 +46,9 @@ class WelcomePage extends React.Component {
 
                 <Row className='login-panel' type="flex" justify="center">
                     <Col className='opration-box' xl={8} lg={14} md={18} sm={20} xs={24}>
-                        <div className='opration-box-bkg'></div>
-                        {isLogin ?
-                            <Form onSubmit={this.handleSubmit.bind(self)} className="login-form">
+                        <div className={isLogin ? 'loginPanel-show login login-form' : 'login-form login'}>
+                            <div className='opration-box-bkg'></div>
+                            <Form onSubmit={this.handleSubmit.bind(self)} className={'login-form'}>
                                 <FormItem>
                                     {getFieldDecorator('userName', {
                                         rules: [{ required: true, message: 'Please input your username!' }],
@@ -67,7 +68,7 @@ class WelcomePage extends React.Component {
                                         valuePropName: 'checked',
                                         initialValue: true,
                                     })(
-                                        <Checkbox>Remember me</Checkbox>
+                                        <Checkbox>自动登录</Checkbox>
                                         )}
                                     <a className="login-form-forgot" href="">Forgot password</a>
                                 </FormItem>
@@ -76,17 +77,21 @@ class WelcomePage extends React.Component {
                                 <div>
                                     Or <a href="">register now~!</a>
                                 </div>
-
-                            </Form> : <div className='login-form without-login' onClick={this.toLogin.bind(self)}>
+                            </Form>
+                        </div>
+                        <div className={isLogin ? 'login-form nav nav-hidden' : 'login-form nav'}>
+                            <div className='opration-box-bkg'></div>
+                            <div className={'login-form'} onClick={this.toLogin.bind(self)}>
                                 <div className='devide-line'> </div>
                                 <div className='option-box'>
                                     <ul>
                                         <li> <a href='javascript:;'>请登录...</a></li>
-                                        <li> <a onClick={this.withoutLogin.bind(self)} href='javascript:;'>游客访问</a></li>
+                                        <li> <Link to="/context">游客访问</Link> ></li>
                                     </ul></div>
                                 <div className='devide-line'> </div>
 
-                            </div>}
+                            </div>
+                        </div>
                     </Col>
                 </Row>
                 {/* <div className='login-panel'>

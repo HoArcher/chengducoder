@@ -1,7 +1,7 @@
 "use strict";
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('../webpack.config');
+var config = require('../webpack.config.dev');
 
 var express = require('express');
 var proxy = require('proxy-middleware');
@@ -14,11 +14,11 @@ var someDatas = require('./loadDatas');
 
 //# -----your-webpack-dev-server------------------
 var server = new WebpackDevServer(webpack(config), {
-  contentBase: path.resolve(__dirname, '../build'),
+  contentBase: path.resolve(__dirname, 'server/assets'),
   hot: true,
   quiet: false,
   noInfo: false,
-  publicPath: "../build/",
+  publicPath: "http://localhost:8081/assets/",
 
   stats: { colors: true },
   headers: {
@@ -39,7 +39,7 @@ app.get('/navUrl', function (req, res) {
 
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, '../build') + '/index.html');
+  res.sendFile(path.resolve(__dirname, 'assets') + '/index.html');
 });
 
 
@@ -50,4 +50,4 @@ app.get('/*', function (req, res) {
 server.listen(8081, "localhost", function () { });
 
 //express服务器---页面访问
-app.listen(80);
+app.listen(4399);

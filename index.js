@@ -32,7 +32,7 @@ const Context = (props) => (
 render(
   <Router history={history}>
     <Switch>
-      <Route path="/welcome" exact component={Welcome} />
+      <Route path="/" exact component={Welcome} />
       <Route path="/context" exact component={Context} />
     </Switch>
   </Router>,

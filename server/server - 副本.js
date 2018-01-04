@@ -35,6 +35,11 @@ app.get('/navUrl', function (req, res) {
   res.send(someDatas.navUrl);
 })
 
+//获取菜单
+app.post('/login', function (req, res) {
+  if(req.body.pas)
+  res.send(someDatas.navUrl);
+})
 app.get('/bundle.js', function (req, res) {
   res.sendFile(path.resolve(__dirname, '../build') + '/bundle.js');
 });

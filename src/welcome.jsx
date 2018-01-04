@@ -63,19 +63,20 @@ class WelcomePage extends React.Component {
                                         <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
                                         )}
                                 </FormItem>
-                                <FormItem style={{ marginBottom: 0.1 + 'rem' }}>
+                                <FormItem style={{ marginBottom: 0.1 + 'rem', color: '#fff' }}>
                                     {getFieldDecorator('remember', {
                                         valuePropName: 'checked',
                                         initialValue: true,
                                     })(
-                                        <Checkbox>自动登录</Checkbox>
+                                        <Checkbox>自動登錄</Checkbox>
                                         )}
-                                    <a className="login-form-forgot" href="">Forgot password</a>
+
                                 </FormItem>
-                                <Button type="primary" size='large' htmlType="submit" className='login-form-button'>Log in </Button>
+                                <Button type="primary" size='large' htmlType="submit" className='login-form-button'>登 錄 </Button>
 
                                 <div>
-                                    Or <a href="">register now~!</a>
+                                    <Link to="/register">去註冊</Link>
+                                    <Link to="/forgetPsw" className="login-form-forgot">忘記密碼？</Link>
                                 </div>
                             </Form>
                         </div>
@@ -85,8 +86,8 @@ class WelcomePage extends React.Component {
                                 <div className='devide-line'> </div>
                                 <div className='option-box'>
                                     <ul>
-                                        <li> <a href='javascript:;'>请登录...</a></li>
-                                        <li> <Link to="/context">游客访问</Link> ></li>
+                                        <li> <a href='javascript:;'>請登錄...</a></li>
+                                        <li> <Link to="/context">遊客訪問</Link> ></li>
                                     </ul></div>
                                 <div className='devide-line'> </div>
 

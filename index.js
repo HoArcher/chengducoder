@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM, { render } from 'react-dom'
 import { Router, Route, Link, Switch, NavLink } from 'react-router-dom'
 import { LayoutCustomize } from './src/__share'
-
+import Home from './src/home.jsx'
 import Welcome from './src/welcome'
 
 import createBrowserHistory from 'history/es/createBrowserHistory'

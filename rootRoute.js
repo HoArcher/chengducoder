@@ -26,7 +26,7 @@ const RootRoute = [
     path: '/1',
     exact: true,
 
-    main: () => <Home1 />
+    main: () => <Home1/>
   },
   {
     path: '/home1/home03',

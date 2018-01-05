@@ -2,28 +2,36 @@ module.exports = {
   //-----------------
   navUrl: [
     {
-      path: "/", navTopName: "首页", siderBar: [
+      path: "/techStack", navTopName:"技术栈", siderBar: [
         {
-          category: "home1",
+          category: "日志",
           children: [
-            { path: "/", name: "home1第一项", },
-            { path: "/home1/home02", name: "home1第二项", },
-            { path: "/home1/home03", name: "home1第三项", },
+            { path: "/techStack/", name: "技术栈1", },
+            { path: "/techStack/home02", name: "技术栈2", },
+            { path: "/techStack/home03", name: "技术栈3", },
           ],
         },
         {
-          category: "home2",
+          category: "PC项目",
+          children: [
+            { path: "/pcPro/home001", name: "home2第1项", },
+            { path: "/pcPro/home002", name: "home2第2项", },
+            { path: "/pcPro/home003", name: "home2第3项", },
+          ],
+        },
+        {
+          category: "mobile项目",
           children: [
             { path: "/home2/home001", name: "home2第1项", },
             { path: "/home2/home002", name: "home2第2项", },
             { path: "/home2/home003", name: "home2第3项", },
           ],
-        },
+        }
       ],
     },
     //siderDataAbout
     {
-      path: "/about", navTopName: "关于我们", siderBar: [
+      path: "/aboutMe", navTopName: "简介", siderBar: [
         {
           category: "about类型1",
           children: [
@@ -45,21 +53,13 @@ module.exports = {
 
     //siderDataAbout
     {
-      path: "/contact", navTopName: "联系我们", siderBar: [
+      path: "/contactMe", navTopName: "联系我吧", siderBar: [
         {
           category: "contact类型1",
           children: [
             { path: "/contact", name: "contact1第一项", },
             { path: "/contact1/contact01", name: "contact1第二项", },
             { path: "/contact1/contact03", name: "contact1第三项", },
-          ],
-        },
-        {
-          category: "contact类型2",
-          children: [
-            { path: "/contact2/contact001", name: "contact2第一项", },
-            { path: "/contact2/contact002", name: "contact2第二项", },
-            { path: "/contact2/contact003", name: "contact第三项", },
           ],
         },
       ]

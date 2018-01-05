@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Header, Content, Sider, Footer } = Layout;
 
 import urls from '../urls/urls';
 import fetch from 'isomorphic-fetch';
@@ -58,14 +58,13 @@ export default class LayoutCustomize extends React.Component {
                 path: item.path,
                 navTopName: item.navTopName,
             };
-            navTopData.push(o);
+            navTopData.push(o);//顶部导航
         });
         this.setState({
             navTopData: navTopData,
             selectedKeysTop: [navTopData[0].navTopName],
-
             siderBarData: data[0],
-            openKeys: [data[0].siderBar[0].category],
+            openKeys: [],
             selectedKeysSider: [data[0].siderBar[0].children[0].name],
         })
     }
@@ -118,9 +117,6 @@ export default class LayoutCustomize extends React.Component {
     showSiderMenu(data) {
         let doms = [];
         data.forEach((item, index) => {
-            if (this.BreadcrumbDIC[item.path] == undefined) {
-                this.BreadcrumbDIC[item.path] = item;
-            }
             doms.push(
                 <Menu.Item key={item.name} >
                     <Link to={item.path}>{item.name}</Link>
@@ -168,16 +164,19 @@ export default class LayoutCustomize extends React.Component {
         return (
             <Layout>
                 <Header className="header">
-                    <div className="logo" />
+                    <div className="logo"></div>
                     <Menu
                         theme="dark"
                         mode="horizontal"
                         selectedKeys={selectedKeysTop}
                         onSelect={this.navMenuItemChange.bind(this)}
-                        style={{ lineHeight: '64px' }}
-                    >
+                        style={{ lineHeight: '64px' }}>
                         {this.showNavMenuItem(navTopData)}
                     </Menu>
+
+                    <div className='login-info'>
+                        用户信息框
+                    </div>
                 </Header>
 
                 <Layout>
@@ -189,25 +188,20 @@ export default class LayoutCustomize extends React.Component {
                             openKeys={openKeys}
                             onOpenChange={this.onOpenChange.bind(this)}
                             style={{ height: '100%', borderRight: 0 }}
-
-
                         >
                             {this.showSiderSubMenu(siderBarData)}
                         </Menu>
                     </Sider>
 
-                    <Layout style={{ padding: '0 24px 24px' }}>
-                        <Breadcrumb style={{ margin: '12px 0' }}>
 
-                            {this.showBreadcrumb()}
-                        </Breadcrumb>
-                        <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-                            {this.props.children}
+                    <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280, padding: '0 24px 24px' }}>
+                        {this.props.children}
+                    </Content>
 
-                        </Content>
-                    </Layout>
                 </Layout>
-
+                <Footer style={{ textAlign: 'center' }}>
+                    Ant Design ©2016 Created by Elijah He
+    </Footer>
             </Layout>
         );
     }

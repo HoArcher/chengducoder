@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider, Footer } = Layout;
 
 import urls from '../urls/urls';
 import fetch from 'isomorphic-fetch';
-// import './layoutCustomize.css'
+import './layoutCustomize.css'
 
 export default class LayoutCustomize extends React.Component {
     constructor() {
@@ -42,9 +42,11 @@ export default class LayoutCustomize extends React.Component {
     getNavUrl() {
         fetch(urls.getNavUrl()).then(response => response.json()).then((data) => {
             this.initState(data);
+
         }).catch((e) => {
             console.log(e);
         })
+
     }
     initState(data) {
         let navTopData = [];
@@ -56,14 +58,13 @@ export default class LayoutCustomize extends React.Component {
                 path: item.path,
                 navTopName: item.navTopName,
             };
-            navTopData.push(o);
+            navTopData.push(o);//顶部导航
         });
         this.setState({
             navTopData: navTopData,
             selectedKeysTop: [navTopData[0].navTopName],
-
             siderBarData: data[0],
-            openKeys: [data[0].siderBar[0].category],
+            openKeys: [],
             selectedKeysSider: [data[0].siderBar[0].children[0].name],
         })
     }
@@ -116,9 +117,6 @@ export default class LayoutCustomize extends React.Component {
     showSiderMenu(data) {
         let doms = [];
         data.forEach((item, index) => {
-            if (this.BreadcrumbDIC[item.path] == undefined) {
-                this.BreadcrumbDIC[item.path] = item;
-            }
             doms.push(
                 <Menu.Item key={item.name} >
                     <Link to={item.path}>{item.name}</Link>
@@ -132,6 +130,7 @@ export default class LayoutCustomize extends React.Component {
         this.setState({
             selectedKeysSider: obj.selectedKeys,
         })
+
     }
     //面包屑导航   
     showBreadcrumb() {
@@ -165,48 +164,63 @@ export default class LayoutCustomize extends React.Component {
         return (
             <Layout>
                 <Header className="header">
-                    <div className="logo" />
+                    <div className="logo"></div>
                     <Menu
                         theme="dark"
                         mode="horizontal"
                         selectedKeys={selectedKeysTop}
                         onSelect={this.navMenuItemChange.bind(this)}
-                        style={{ lineHeight: '64px' }}
-                    >
+                        style={{ lineHeight: '64px' }}>
                         {this.showNavMenuItem(navTopData)}
                     </Menu>
+
+                    <div className='login-info'>
+                        用户信息框
+                    </div>
                 </Header>
 
                 <Layout>
-                    <Sider width={200} style={{ background: '#fff' }}>
+                    <Sider>
                         <Menu
                             mode="inline"
                             selectedKeys={selectedKeysSider}
                             onSelect={this.handlMenuSelect.bind(this)}
                             openKeys={openKeys}
                             onOpenChange={this.onOpenChange.bind(this)}
-                            style={{ height: '100%', borderRight: 0 }}
-                        >
-                            {this.showSiderSubMenu(siderBarData)}
+                            style={{ height: '100%', borderRight: 0 }}>
+                            {/* {this.showSiderSubMenu(siderBarData)} */}
+                            <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
+                                <Menu.Item key="1">Option 1</Menu.Item>
+                                <Menu.Item key="2">Option 2</Menu.Item>
+                                <Menu.Item key="3">Option 3</Menu.Item>
+                                <Menu.Item key="4">Option 4</Menu.Item>
+                            </SubMenu>
+                            <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
+                                <Menu.Item key="5">Option 5</Menu.Item>
+                                <Menu.Item key="6">Option 6</Menu.Item>
+                                <SubMenu key="sub3" title="Submenu">
+                                    <Menu.Item key="7">Option 7</Menu.Item>
+                                    <Menu.Item key="8">Option 8</Menu.Item>
+                                </SubMenu>
+                            </SubMenu>
+                            <SubMenu key="sub4" title={<span><Icon type="setting" /><span>Navigation Three</span></span>}>
+                                <Menu.Item key="9">Option 9</Menu.Item>
+                                <Menu.Item key="10">Option 10</Menu.Item>
+                                <Menu.Item key="11">Option 11</Menu.Item>
+                                <Menu.Item key="12">Option 12</Menu.Item>
+                            </SubMenu>
                         </Menu>
                     </Sider>
 
-                    <Layout style={{ padding: '24px 24px' }}>
-                        {/* <Breadcrumb style={{ margin: '12px 0' }}>
-                            {this.showBreadcrumb()}
-                        </Breadcrumb> */}
-                        <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-                            {this.props.children}
-                        </Content>
-                        <Footer style={{ textAlign: 'center' }}>
-                            Ant Design ©2016 Created by Ant UED
-    </Footer>
-                    </Layout>
+
+                    <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280, padding: '0 24px 24px' }}>
+                        {this.props.children}
+                    </Content>
 
                 </Layout>
-
-
-
+                <Footer style={{ textAlign: 'center' }}>
+                    Ant Design ©2016 Created by Elijah He
+    </Footer>
             </Layout>
         );
     }

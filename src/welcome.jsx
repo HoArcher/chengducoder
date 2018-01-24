@@ -86,8 +86,8 @@ class WelcomePage extends React.Component {
                                 <div className='devide-line'> </div>
                                 <div className='option-box'>
                                     <ul>
-                                        <li> <a href='javascript:;'>請登錄...</a></li>
-                                        <li> <Link to="/context">遊客訪問</Link> ></li>
+                                        <li className='login-toLogin'> <a href='javascript:;'>請登錄...</a></li>
+                                        <li className='login-customer-in'> <Link to="/context">遊客訪問</Link> ></li>
                                     </ul></div>
                                 <div className='devide-line'> </div>
 

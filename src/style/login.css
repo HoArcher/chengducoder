@@ -73,11 +73,11 @@ color: white
     width: 100%;
     padding: 1rem 0;
   }
- li:nth-child(1){
+ .login-toLogin{
     text-align: center;
    
   }
-  li:nth-child(2){
+  .login-customer-in{
     text-align: right;
     padding-right: 2rem;
     text-decoration: underline

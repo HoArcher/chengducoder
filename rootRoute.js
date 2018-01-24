@@ -29,8 +29,8 @@ const RootRoute = [
     main: () => <Home1/>
   },
   {
-    path: '/home1/home03',
-    main: () =><div>home3</div>
+    path: '/home/techStack/record/:id',
+    main: () =><div>/home/techStack/record/01</div>
   }, 
   {
     path: '/home1/home02',
@@ -40,7 +40,7 @@ const RootRoute = [
     path: '/about',
     main: () => <h2>关于我们</h2>
   },
-  {
+  { 
     path: '/contact',
     main: () => <h2>联系我们</h2>
   }
